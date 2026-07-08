@@ -16,7 +16,7 @@ class Category(models.Model):
 
 STATUS_CHOICES = (
     ("Draft","Draft"),
-    ("published","Published")
+    ("Published","Published")
 )
 
 class Blog(models.Model):
@@ -30,7 +30,7 @@ class Blog(models.Model):
     status =models.CharField(choices=STATUS_CHOICES, default="Draft")
     is_featured =models.BooleanField(default=False)
     created_at =models.DateTimeField(auto_now_add=True)
-    upadted_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
        return self.title
