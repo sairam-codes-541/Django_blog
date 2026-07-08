@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <div class="row">
+
+        <!-- Blog Content -->
+        <div class="col-lg-8">
+
+            <article>
+
+                <!-- Header -->
+                <header class="mb-4">
+
+                    <h1 class="display-5 fw-bold">
+                        {{ single_blog.title }}
+                    </h1>
+
+                    <div class="text-muted mb-3">
+                        Posted on {{ single_blog.created_at|date:"F d, Y" }}
+                        by {{ single_blog.author }}
+                    </div>
+
+                    <span class="badge bg-warning">
+                        {{ single_blog.category }}
+                    </span>
+
+                </header>
+
+                <!-- Featured Image -->
+                <figure class="mb-4">
+                    <img
+                        class="img-fluid rounded w-100"
+                        src="{{ single_blog.featured_image.url }}"
+                        alt="{{ single_blog.title }}">
+                </figure>
+
+                <!-- Blog Body -->
+                 <section class="mb-5">
+
+                    {{ single_blog.short_description|safe }}
+
+                </section>
+                <section class="mb-5">
+
+                    {{ single_blog.blog_body|safe }}
+
+                </section>
+
+            </article>
+
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-lg-4">
+
+
+            <!-- Categories -->
+            <div class="card mb-4">
+
+                <div class="card-header">
+                    <h4 class="fst-italic mb-0">
+                        Categories
+                    </h4>
+                </div>
+
+                <div class="card-body">
+
+                    <div class="row">
+
+                        <div class="col-6">
+
+                            <ul class="list-unstyled">
+
+                                {% for category in categories %}
+
+                                <li class="mb-2">
+
+                                    <a href="{% url 'post_by_category' category.id %}">
+                                        {{ category.category_name }}
+                                    </a>
+
+                                </li>
+
+                                {% endfor %}
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Follow -->
+            <div class="card mb-4">
+
+                <div class="card-header">
+                    <h4 class="fst-italic mb-0">
+                        Follow Us
+                    </h4>
+                </div>
+
+                <div class="card-body">
+
+                    <ul class="list-unstyled">
+                         {% if sociallinks %}
+                         {% for oneacc in sociallinks%}
+                        <li>
+                            <a href="{{oneacc.link}}">{{oneacc.platform}}</a>
+                        </li>
+                         {% endfor %}
+                         {% endif %}
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

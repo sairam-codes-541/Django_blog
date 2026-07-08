@@ -1,6 +1,11 @@
 from .models import Category
+from assignments.models import SocialLinks
 
-def categories(request):
+def get_categories(request):
     return{
-        "categories": Category.objects.all()
+        "categories": Category.objects.all(),
+    }
+def get_social_links(request):
+    return{
+        "sociallinks": SocialLinks.objects.all()
     }
