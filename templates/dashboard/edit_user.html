@@ -10,13 +10,13 @@
 
     <!--loads the right side bar content-->
     <div class="col-md-9">
-        <h3> All New Category</h3>
+        <h3>Edit User</h3>
         
-        <form action="{% url 'add_category' %}" method="POST" style="width: 500px;">
+        <form action="{% url 'edit_user' user.id %}"  method="POST" style="width: 500px;">
             {% csrf_token %}
             {{ form | crispy }}
 
-            <button type="submit" class="btn btn-warning">submit</button>
+            <button type="submit" class="btn btn-warning">Submit</button>
         </form>
 
     </div>    

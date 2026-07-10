@@ -11,7 +11,7 @@
     <!--loads the right side bar content-->
     <div class="col-md-9">
         <h3>Edit Post</h3>
-         <form class="{% url 'edit_post' post.id %}" method="POST" enctype="multipart/form-data" style="width: 500px;">
+         <form action="{% url 'edit_post' post.id %}" method="POST" enctype="multipart/form-data" style="width: 500px;">
             {% csrf_token %}
             {{ form | crispy }}
 
